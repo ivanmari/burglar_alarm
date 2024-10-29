@@ -42,7 +42,7 @@ public:
 #ifdef X86_PLAT
         if(m_state)
         {
-            //std::cout << m_state->getName() << " --> " << state->getName() << std::endl;
+            std::cout << m_state->getName() << " --> " << state->getName() << std::endl;
         }
         else
         {

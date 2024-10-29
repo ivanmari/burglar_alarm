@@ -3,11 +3,11 @@
 #include "ArduinoPlat.h"
 ArduinoPlat plat;
 #else
-#include "x86/X86Platform.h"
+#include "sim/X86Platform.h"
 X86Platform plat;
 #endif // X86_PLAT 
 
-#include "Armed.h"
+#include "Init.h"
 #include "ASi.h"
 #include "SimpleQueue.h"
 #include "io_defs.h"
@@ -19,9 +19,14 @@ Fsm fsm;
 
 
 void setup() {
+#ifndef X86_PLAT
   Serial.begin(115200);
-  fsm.setState(Armed::Instance(&fsm, &asi));
+ #endif // X86_PLAT
+  fsm.setState(Init::Instance(&fsm, &asi));
+#ifndef X86_PLAT
   Serial.print("Alarm Start");
+ #endif // X86_PLAT
+
 }
 
 void loop() 
