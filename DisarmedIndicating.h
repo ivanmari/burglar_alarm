@@ -1,12 +1,12 @@
-#ifndef PANIC_H
-#define PANIC_H
+#ifndef DISARMED_INDICATING_H
+#define DISARMED_INDICATING_H
 
 #include "Blinker.h"
 #include "Fsm.h"
 #include "PrecisionTimer.h"
 #include "Switch.h"
 
-/** \brief Panic
+/** \brief DisarmedIndicating
  *
  * While being in this state, the siren output is active during ACTIVE_PERIOD useconds
  *
@@ -16,19 +16,19 @@
  */
 
 
-class Panic : public State
+class DisarmedIndicating : public State
 {
 public:
-    Panic(Fsm* fsm, ASi* asi);
+    DisarmedIndicating(Fsm* fsm, ASi* asi);
 
-    static Panic* Instance(Fsm* fsm, ASi* asi);
+    static DisarmedIndicating* Instance(Fsm* fsm, ASi* asi);
 
     void execute();
     void reset();
 #ifdef X86_PLAT
     std::string getName() const
     {
-        return "Panic";
+        return "DisarmedIndicating";
     }
 #endif // X86_PLAT
 private:
@@ -36,6 +36,5 @@ private:
     ASi* m_asi;
     Blinker m_blinker;
     PrecisionTimer m_periodTimer;
-    Switch m_disarm_sw;
 };
-#endif //PANIC_H
+#endif //DISARMED_INDICATING_H

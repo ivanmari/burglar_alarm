@@ -1,34 +1,35 @@
-#ifndef PANIC_H
-#define PANIC_H
+#ifndef ARMED_INDICATING_H
+#define ARMED_INDICATING_H
 
 #include "Blinker.h"
 #include "Fsm.h"
 #include "PrecisionTimer.h"
 #include "Switch.h"
 
-/** \brief Panic
+/** \brief ArmedIndicating
  *
  * While being in this state, the siren output is active during ACTIVE_PERIOD useconds
+ * This is the cortesy beep that indicates the system is armed
  *
- * Previous state: Armed
- * Next states: Disarmed, Armed
+ * Previous state: Init
+ * Next states: Armed
  *
  */
 
 
-class Panic : public State
+class ArmedIndicating : public State
 {
 public:
-    Panic(Fsm* fsm, ASi* asi);
+    ArmedIndicating(Fsm* fsm, ASi* asi);
 
-    static Panic* Instance(Fsm* fsm, ASi* asi);
+    static ArmedIndicating* Instance(Fsm* fsm, ASi* asi);
 
     void execute();
     void reset();
 #ifdef X86_PLAT
     std::string getName() const
     {
-        return "Panic";
+        return "ArmedIndicating";
     }
 #endif // X86_PLAT
 private:
@@ -36,6 +37,5 @@ private:
     ASi* m_asi;
     Blinker m_blinker;
     PrecisionTimer m_periodTimer;
-    Switch m_disarm_sw;
 };
-#endif //PANIC_H
+#endif //ARMED_INDICATING_H

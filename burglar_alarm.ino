@@ -7,7 +7,7 @@ ArduinoPlat plat;
 X86Platform plat;
 #endif // X86_PLAT 
 
-#include "Init.h"
+#include "ArmedIndicating.h"
 #include "ASi.h"
 #include "SimpleQueue.h"
 #include "io_defs.h"
@@ -22,7 +22,7 @@ void setup() {
 #ifndef X86_PLAT
   Serial.begin(115200);
  #endif // X86_PLAT
-  fsm.setState(Init::Instance(&fsm, &asi));
+  fsm.setState(ArmedIndicating::Instance(&fsm, &asi));
 #ifndef X86_PLAT
   Serial.print("Alarm Start");
  #endif // X86_PLAT

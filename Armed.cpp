@@ -1,6 +1,6 @@
 #include "Armed.h"
 #include "Panic.h"
-#include "Init.h"
+#include "DisarmedIndicating.h"
 
 #include "io_defs.h"
 
@@ -26,7 +26,7 @@ Armed::execute()
 
     if(m_disarm_sw.isOn())
     {
-        m_fsm->setState(Init::Instance(m_fsm, m_asi));
+        m_fsm->setState(DisarmedIndicating::Instance(m_fsm, m_asi));
         return;
     }
 }

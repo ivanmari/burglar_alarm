@@ -1,5 +1,5 @@
 #include "Init.h"
-#include "Armed.h"
+#include "ArmedIndicating.h"
 
 #include "io_defs.h"
 
@@ -21,7 +21,7 @@ Init::execute()
     
     if(m_armed_sw.isOn())
     {
-        m_fsm->setState(Armed::Instance(m_fsm, m_asi));
+        m_fsm->setState(ArmedIndicating::Instance(m_fsm, m_asi));
         return;
     }
 }

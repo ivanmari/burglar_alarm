@@ -3,13 +3,10 @@
 
 #include "io_defs.h"
 
-const long SECONDS = 1000000;
-const long MILLISECONDS = 1000;
-const long int TIME_OFF = 500 * MILLISECONDS;
-const long int TIME_ON = 500 * MILLISECONDS;
-
 Blinker::Blinker(Platform* plat, int output_pin, long int time_on, long int time_off, bool active_level):
-m_active_level(active_level), m_output_pin(output_pin),
+m_plat(plat),
+m_active_level(active_level),
+m_output_pin(output_pin),
 m_blinkOnTimer(plat, time_on),
 m_blinkOffTimer(plat, time_off)
 {
