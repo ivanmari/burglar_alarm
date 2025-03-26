@@ -37,5 +37,6 @@ private:
     ASi* m_asi;
     Switch m_sw;
     Switch m_disarm_sw;
+    PrecisionTimer m_delay;
 };
 #endif //ARMED_H

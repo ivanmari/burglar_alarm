@@ -3,8 +3,6 @@
 
 #include "io_defs.h"
 
-const long SECONDS = 1000000;
-const long MILLISECONDS = 1000;
 const long int PANIC_PERIOD = 110 * MILLISECONDS;
 const long int SIREN_OFF = 100 * MILLISECONDS;
 const long int SIREN_ON = 100 * MILLISECONDS;

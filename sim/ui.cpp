@@ -4,6 +4,7 @@
 #include <sstream>
 #include <iomanip>
 #include <chrono>
+#include <iostream>
 
 #define IS_INPUT 0x00
 #define IS_OUTPUT 0x0F
@@ -24,7 +25,12 @@ unsigned char GpioSnapshot[TOTAL_IO_COUNT] = {};
 void displayGpios();
 
 void startInputOutputSim()
-{
+{ 
+   	for(unsigned i = 1; i <= sizeof(GpioSnapshot)/sizeof(unsigned char); ++i)
+	{
+	   GpioSnapshot[i] = 0x0;
+	}
+   
 	std::thread gpio_reader(displayGpios);
 	gpio_reader.detach();
 }
@@ -57,11 +63,11 @@ void displayGpios()
 
     mvprintw(row/2 + 1, col, "%s", pins_stream.str().c_str());
 	
-	bool display_loop = true;
+    bool display_loop = true;
     unsigned long key_pressed_timestamp = 0;
-	unsigned long now = 0;
+    unsigned long now = 0;
 	
-	while(display_loop)
+    while(display_loop)
     {
         pins = "";
         for(unsigned i = 1; i <= sizeof(GpioSnapshot)/sizeof(unsigned char); ++i)
@@ -98,21 +104,33 @@ void displayGpios()
         refresh();
 
         char ch = getch();
-		now = duration_cast<milliseconds>(steady_clock::now().time_since_epoch()).count();
+	    now = duration_cast<milliseconds>(steady_clock::now().time_since_epoch()).count();
 
         switch(ch)
         {
-        case 68:
+	case 65:
             key_pressed = true;
             key_pressed_timestamp = duration_cast<milliseconds>(steady_clock::now().time_since_epoch()).count();
-            GpioSnapshot[10] &= 0x00;
+            GpioSnapshot[8] |= 0xF0;
+            break;
+        case 66:
+            key_pressed = true;
+            key_pressed_timestamp = duration_cast<milliseconds>(steady_clock::now().time_since_epoch()).count();
+            GpioSnapshot[9] |= 0xF0;
             break;
         case 67:
             key_pressed = true;
             key_pressed_timestamp = duration_cast<milliseconds>(steady_clock::now().time_since_epoch()).count();
-            GpioSnapshot[11] &= 0x00;
+            GpioSnapshot[10] |= 0xF0;
             break;
+        case 68:
+            key_pressed = true;
+            key_pressed_timestamp = duration_cast<milliseconds>(steady_clock::now().time_since_epoch()).count();
+            GpioSnapshot[11] |= 0xF0;
+            break;
+ 
         default:
+	    
             if(key_pressed_timestamp + KEY_PERSISTENCE > now)
             {
                 break;
@@ -120,8 +138,10 @@ void displayGpios()
             else
             {
                 key_pressed = false;
-                GpioSnapshot[10] |= 0xF0;
-                GpioSnapshot[11] |= 0xF0;
+		        GpioSnapshot[8] &= 0x00;
+                GpioSnapshot[9] &= 0x00; 
+                GpioSnapshot[10] &= 0x00;
+                GpioSnapshot[11] &= 0x00;
             }
         }
     }
