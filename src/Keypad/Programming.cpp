@@ -6,9 +6,7 @@
 const long long DELAY_BEFORE_ARMED = 20 * SECONDS;
 
 
-Programming::Programming(Fsm* fsm, ASi* asi):State(fsm), m_asi(asi), 
-m_sw(VIBRATION_SENSOR_1, HIGH, asi),
-m_disarm_sw(DISARM, HIGH, asi),
+Programming::Programming(Fsm* fsm, ASi* asi):State(fsm), m_asi(asi),
 m_delay(asi->getPlatform(), DELAY_BEFORE_ARMED)
 {}
 

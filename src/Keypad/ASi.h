@@ -14,8 +14,8 @@ public:
 
   Platform* getPlatform() const;
 	
-  void soundSiren();
-  void turnOffSiren();
+  void beepOn();
+  void beepOff();
 
 private:
 

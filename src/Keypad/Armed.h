@@ -35,8 +35,6 @@ public:
 private:
 
     ASi* m_asi;
-    Switch m_sw;
-    Switch m_disarm_sw;
     PrecisionTimer m_delay;
     PrecisionTimer m_input_timeout;
 };

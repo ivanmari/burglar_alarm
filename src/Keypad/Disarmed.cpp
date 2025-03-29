@@ -20,9 +20,7 @@ char Master[PWD_LEN] = "1984";    // Password
 byte rowPins[ROWS] = {8, 5, 6, 3};  // Connections to   Arduino
 byte colPins[COLS] = { 7, 4, 2};
 
-Disarmed::Disarmed(Fsm* fsm, ASi* asi):State(fsm), m_asi(asi), 
-m_sw(VIBRATION_SENSOR_1, HIGH, asi),
-m_disarm_sw(DISARM, HIGH, asi),
+Disarmed::Disarmed(Fsm* fsm, ASi* asi):State(fsm), m_asi(asi),
 m_delay(asi->getPlatform(), DELAY_BEFORE_ARMED),
 m_input_timeout(asi->getPlatform(), DELAY_BEFORE_ARMED)
 {}
@@ -36,9 +34,12 @@ Disarmed::Instance(Fsm* fsm, ASi* asi)
 
 void
 Disarmed::execute()
-{
-  Serial.print("Disarmed\n");
-    m_asi->getPlatform()->setPin(ARMED, false);
+{    
+    Serial.print("Disarmed\n");
+    m_asi->getPlatform()->setPin(ARMED, LOW);
+    m_asi->getPlatform()->setPin(ARMED_LED, LOW);
+    m_asi->getPlatform()->setPin(DISARMED_LED, HIGH);
+    
     Keypad customKeypad = Keypad(makeKeymap(hexaKeys),   rowPins, colPins, ROWS, COLS);
 
     m_input_timeout.start();
@@ -51,19 +52,28 @@ Disarmed::execute()
            m_input_timeout.reset();
            m_input_timeout.start();
             Data[data_count++] = customKey;
-            //beep();
-            delay(300);
-            Serial.print(customKey);
-            delay(300);
+            m_asi->beepOn();
+            delay(150);
+            m_asi->beepOff();
+            Serial.print(customKey);  
         
   
             if(PWD_LEN - 1 == data_count) {
                 if (!strcmp(Data, Master)) {
                     m_input_timeout.reset();
+                    for(auto i = 0; i<3; i++){
+                      m_asi->beepOn();
+                      delay(50);
+                      m_asi->beepOff();
+                      delay(50);
+                    }
                     m_fsm->setState(Armed::Instance(m_fsm, m_asi));
                     return;
                 }
                 else {
+                    m_asi->beepOn();
+                    delay(2000);
+                    m_asi->beepOff();
                     Serial.print("Wrong Pwd\n");
                     for (auto i = 0; i < PWD_LEN; i++) {
                         Data[i] = 0;
