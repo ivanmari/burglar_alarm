@@ -8,10 +8,10 @@
 
 /** \brief DisarmedIndicating
  *
- * While being in this state, the siren output is active during ACTIVE_PERIOD useconds
+ * While being in this state, the siren output indicates the state change to Disarmed
  *
  * Previous state: Armed
- * Next states: Disarmed, Armed
+ * Next states: Disarmed
  *
  */
 

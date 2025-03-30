@@ -3,7 +3,8 @@
 
 #include "Fsm.h"
 #include "PrecisionTimer.h"
-#include "Switch.h"
+#include "Zone.h"
+#include "io_defs.h"
 
 /** \brief Armed
  *
@@ -35,8 +36,11 @@ public:
 private:
 
     ASi* m_asi;
-    Switch m_sw;
+    Zone m_zone_1;
+    Zone m_zone_2;
+    Zone m_zone_3;
+    Zone m_zone_4;
+    Zone* m_zones[MAX_ZONES_COUNT];
     Switch m_disarm_sw;
-    PrecisionTimer m_delay;
 };
 #endif //ARMED_H

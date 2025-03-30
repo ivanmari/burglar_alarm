@@ -1,12 +1,22 @@
 #ifndef IO_DEFS
 #define IO_DEFS
 
-const int TOSC = 15;
-const int DISARM = 8;
-const int ARMED = 9;
-const int VIBRATION_SENSOR_1 = 10;
-const int VIBRATION_SENSOR_2 = 11;
-const int VIBRATION_SENSOR_3 = 12;
+const int ARMED = 8; //Level
+const int ZONE_GPIO_1 = 9;
+const int ZONE_GPIO_2 = 10;
+const int ZONE_GPIO_3 = 11;
+const int ZONE_GPIO_4 = 12;
+const int ZONE_LED_1 = 2;
+const int ZONE_LED_2 = 3;
+const int ZONE_LED_3 = 4;
+const int ZONE_LED_4 = 5;
+
+const int ZONE_1 = 0;
+const int ZONE_2 = 1;
+const int ZONE_3 = 2;
+const int ZONE_4 = 3;
+const int MAX_ZONES_COUNT = 4;
+
 const int SIREN = 13;
 
 

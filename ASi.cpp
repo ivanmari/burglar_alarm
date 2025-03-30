@@ -18,10 +18,10 @@ ASi::ASi(Platform* plat, SimpleQueue* SimpleQueue):m_platform(plat), m_SimpleQue
     m_platform->setPin(SIREN, LOW);
     m_platform->setPinMode(SIREN, PIN_OUTPUT);
 
-    m_platform->setPinMode(VIBRATION_SENSOR_1, PIN_INPUT);
-    m_platform->setPinMode(VIBRATION_SENSOR_2, PIN_INPUT);
-    m_platform->setPinMode(VIBRATION_SENSOR_3, PIN_INPUT);
-
+    m_platform->setPinMode(ZONE_GPIO_1, PIN_INPUT);
+    m_platform->setPinMode(ZONE_GPIO_2, PIN_INPUT);
+    m_platform->setPinMode(ZONE_GPIO_3, PIN_INPUT);
+    m_platform->setPinMode(ZONE_GPIO_4, PIN_INPUT);
 }
 
 void
