@@ -8,11 +8,11 @@ const long DELAY_BEFORE_ARMED = 20 * SECONDS;
 
 
 Armed::Armed(Fsm* fsm, ASi* asi):State(fsm), m_asi(asi),
-m_disarm_sw(ARMED, LOW, asi),
-  m_zone_1(Zone(Switch(ZONE_1, HIGH, asi), Led(ZONE_LED_1, HIGH, asi), ZONE_1)),
-  m_zone_2(Zone(Switch(ZONE_2, HIGH, asi), Led(ZONE_LED_2, HIGH, asi), ZONE_2)),
-  m_zone_3(Zone(Switch(ZONE_3, HIGH, asi), Led(ZONE_LED_3, HIGH, asi), ZONE_3)),
-  m_zone_4(Zone(Switch(ZONE_4, HIGH, asi), Led(ZONE_LED_4, HIGH, asi), ZONE_4))
+m_disarm_sw(ARMED, HIGH, asi),
+  m_zone_1(Zone(Switch(ZONE_GPIO_1, HIGH, asi), Led(ZONE_LED_1, HIGH, asi), ZONE_1)),
+  m_zone_2(Zone(Switch(ZONE_GPIO_2, HIGH, asi), Led(ZONE_LED_2, HIGH, asi), ZONE_2)),
+  m_zone_3(Zone(Switch(ZONE_GPIO_3, HIGH, asi), Led(ZONE_LED_3, HIGH, asi), ZONE_3)),
+  m_zone_4(Zone(Switch(ZONE_GPIO_4, HIGH, asi), Led(ZONE_LED_4, HIGH, asi), ZONE_4))
 {
   m_zones[ZONE_1] = &m_zone_1;
   m_zones[ZONE_2] = &m_zone_2;

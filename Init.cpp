@@ -2,11 +2,15 @@
 #include "ArmedIndicating.h"
 #include "io_defs.h"
 
+#ifdef X86_PLAT
+#include "sim/EEPROM.h"
+Eeprom EEPROM;
+#else
 #include <EEPROM.h>
+#endif
 
 
-
-Init::Init(Fsm* fsm, ASi* asi):State(fsm), m_asi(asi), m_armed_sw(ARMED, HIGH, asi)
+Init::Init(Fsm* fsm, ASi* asi):State(fsm), m_asi(asi), m_armed_sw(ARMED, LOW, asi)
 {}
 
 Init*

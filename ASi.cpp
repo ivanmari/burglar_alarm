@@ -22,6 +22,16 @@ ASi::ASi(Platform* plat, SimpleQueue* SimpleQueue):m_platform(plat), m_SimpleQue
     m_platform->setPinMode(ZONE_GPIO_2, PIN_INPUT);
     m_platform->setPinMode(ZONE_GPIO_3, PIN_INPUT);
     m_platform->setPinMode(ZONE_GPIO_4, PIN_INPUT);
+
+    m_platform->setPinMode(ZONE_LED_1, PIN_OUTPUT);
+    m_platform->setPinMode(ZONE_LED_2, PIN_OUTPUT);
+    m_platform->setPinMode(ZONE_LED_3, PIN_OUTPUT);
+    m_platform->setPinMode(ZONE_LED_4, PIN_OUTPUT);
+
+    m_platform->setPin(ZONE_LED_1, LOW);
+    m_platform->setPin(ZONE_LED_2, LOW);
+    m_platform->setPin(ZONE_LED_3, LOW);
+    m_platform->setPin(ZONE_LED_4, LOW);
 }
 
 void

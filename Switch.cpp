@@ -1,7 +1,7 @@
 #include "ASi.h"
 #include "Switch.h"
 
-const int DEBOUNCE_PERIOD = 0; //us
+const int DEBOUNCE_PERIOD = 15; //us
 
 Switch::Switch(int m_pin, bool level, ASi* asi):m_pin(m_pin), m_active_level(level),
     m_debounceTimer(asi->getPlatform(), DEBOUNCE_PERIOD), m_platform(asi->getPlatform()) {}
@@ -32,4 +32,3 @@ Switch::isOn()
 
     return switchStat;
 }
-

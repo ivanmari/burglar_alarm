@@ -1,5 +1,11 @@
 #include "Zone.h"
+
+#ifdef X86_PLAT
+#include "sim/EEPROM.h"
+#else
 #include <EEPROM.h>
+#endif
+
 
 Zone::Zone(Switch zone_sw, Led zone_led, int zone_id):m_zone_sw(zone_sw), m_zone_led(zone_led), m_zone_id(zone_id)
 {

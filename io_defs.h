@@ -23,7 +23,7 @@ const int SIREN = 13;
 //Constants that depend on the platform
 
 #ifdef X86_PLAT
-const bool HIGH = true;
+const bool HIGH = true; 
 const bool LOW = false;
 
 const int SECONDS = 1000000;
