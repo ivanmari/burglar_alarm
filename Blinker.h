@@ -15,6 +15,7 @@ class Blinker
 {
 public:
     Blinker(Platform* plat, int output_pin, long int time_on, long int time_off, bool active_level);
+    Blinker();
 
     void execute();
     void reset();

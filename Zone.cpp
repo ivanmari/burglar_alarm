@@ -16,8 +16,18 @@ bool Zone::check()
     return m_zone_sw.isOn();
 }
 
-void Zone::indicate_violation()
+void Zone::indicateViolation()
 {
     m_zone_led.on();
     EEPROM.write(m_zone_id, 1);
+}
+
+int Zone::getId(){
+  return m_zone_id;
+}
+
+void Zone::reset()
+{
+    m_zone_led.off();
+    EEPROM.update(m_zone_id, 0);
 }

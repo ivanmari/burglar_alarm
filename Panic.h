@@ -5,6 +5,7 @@
 #include "Fsm.h"
 #include "PrecisionTimer.h"
 #include "Switch.h"
+#include "Ipc.h"
 
 /** \brief Panic
  *
@@ -19,9 +20,9 @@
 class Panic : public State
 {
 public:
-    Panic(Fsm* fsm, ASi* asi);
+    Panic(Fsm* fsm, ASi* asi, Ipc* ipc);
 
-    static Panic* Instance(Fsm* fsm, ASi* asi);
+    static Panic* Instance(Fsm* fsm, ASi* asi, Ipc* ipc);
 
     void execute();
     void reset();
@@ -37,5 +38,6 @@ private:
     Blinker m_blinker;
     PrecisionTimer m_periodTimer;
     Switch m_disarm_sw;
+    Ipc* m_ipc;
 };
 #endif //PANIC_H

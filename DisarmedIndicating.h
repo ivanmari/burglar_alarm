@@ -5,6 +5,7 @@
 #include "Fsm.h"
 #include "PrecisionTimer.h"
 #include "Switch.h"
+#include "Ipc.h"
 
 /** \brief DisarmedIndicating
  *
@@ -19,9 +20,9 @@
 class DisarmedIndicating : public State
 {
 public:
-    DisarmedIndicating(Fsm* fsm, ASi* asi);
+    DisarmedIndicating(Fsm* fsm, ASi* asi, Ipc* ipc);
 
-    static DisarmedIndicating* Instance(Fsm* fsm, ASi* asi);
+    static DisarmedIndicating* Instance(Fsm* fsm, ASi* asi, Ipc* ipc);
 
     void execute();
     void reset();
@@ -36,5 +37,6 @@ private:
     ASi* m_asi;
     Blinker m_blinker;
     PrecisionTimer m_periodTimer;
+    Ipc* m_ipc;
 };
 #endif //DISARMED_INDICATING_H

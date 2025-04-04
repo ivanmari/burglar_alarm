@@ -4,6 +4,7 @@
 #include "Fsm.h"
 #include "PrecisionTimer.h"
 #include "Switch.h"
+#include "Ipc.h"
 
 /** \brief INIT
  *
@@ -20,9 +21,9 @@
 class Init : public State
 {
 public:
-    Init(Fsm* fsm, ASi* asi);
+    Init(Fsm* fsm, ASi* asi, Ipc* ipc);
 
-    static Init* Instance(Fsm* fsm, ASi* asi);
+    static Init* Instance(Fsm* fsm, ASi* asi, Ipc* ipc);
 
     void execute();
     void reset();
@@ -36,5 +37,6 @@ private:
 
     ASi* m_asi;
     Switch m_armed_sw;
+    Ipc* m_ipc;
 };
 #endif //Init_H

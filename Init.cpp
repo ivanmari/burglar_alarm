@@ -10,13 +10,13 @@ Eeprom EEPROM;
 #endif
 
 
-Init::Init(Fsm* fsm, ASi* asi):State(fsm), m_asi(asi), m_armed_sw(ARMED, LOW, asi)
+Init::Init(Fsm* fsm, ASi* asi, Ipc* ipc):State(fsm), m_asi(asi), m_ipc(ipc), m_armed_sw(ARMED, LOW, asi)
 {}
 
 Init*
-Init::Instance(Fsm* fsm, ASi* asi)
+Init::Instance(Fsm* fsm, ASi* asi, Ipc* ipc)
 {
-    static Init Init(fsm, asi);
+    static Init Init(fsm, asi, ipc);
     return &Init;
 }
 
@@ -30,7 +30,8 @@ Init::execute()
         for(auto i = 0; i < MAX_ZONES_COUNT; i++){
             EEPROM.update(i, 0);
         }
-        m_fsm->setState(ArmedIndicating::Instance(m_fsm, m_asi));
+        m_ipc->setCoreAlarmCode(ALRM_CLEARED);//TODO Should be cleared by explicit user command
+        m_fsm->setState(ArmedIndicating::Instance(m_fsm, m_asi, m_ipc));
         return;
     }
 }

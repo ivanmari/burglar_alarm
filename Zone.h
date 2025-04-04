@@ -25,7 +25,11 @@ public:
 
     bool check();
 
-    void indicate_violation();
+    void indicateViolation();
+
+    int getId();
+
+    void reset();
 
 private:
     Switch m_zone_sw;

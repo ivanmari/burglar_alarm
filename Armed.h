@@ -4,6 +4,7 @@
 #include "Fsm.h"
 #include "PrecisionTimer.h"
 #include "Zone.h"
+#include "Ipc.h"
 #include "io_defs.h"
 
 /** \brief Armed
@@ -21,9 +22,9 @@
 class Armed : public State
 {
 public:
-    Armed(Fsm* fsm, ASi* asi);
+    Armed(Fsm* fsm, ASi* asi, Ipc* ipc);
 
-    static Armed* Instance(Fsm* fsm, ASi* asi);
+    static Armed* Instance(Fsm* fsm, ASi* asi, Ipc* ipc);
 
     void execute();
     void reset();
@@ -42,5 +43,6 @@ private:
     Zone m_zone_4;
     Zone* m_zones[MAX_ZONES_COUNT];
     Switch m_disarm_sw;
+    Ipc* m_ipc;
 };
 #endif //ARMED_H
