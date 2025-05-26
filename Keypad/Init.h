@@ -2,8 +2,8 @@
 #define INIT_H
 
 #include "ASi.h"
-#include "Fsm.h"
-#include "PrecisionTimer.h"
+#include "../Fsm.h"
+#include "../PrecisionTimer.h"
 
 /** \brief INIT
  *

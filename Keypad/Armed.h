@@ -1,9 +1,9 @@
 #ifndef ARMED_H
 #define ARMED_H
 
-#include "Fsm.h"
-#include "PrecisionTimer.h"
-#include "Switch.h"
+#include "../Fsm.h"
+#include "../PrecisionTimer.h"
+#include "../Switch.h"
 
 /** \brief Armed
  *
