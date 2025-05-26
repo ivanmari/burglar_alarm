@@ -1,9 +1,9 @@
 #ifndef PROGRAMMING_H
 #define PROGRAMMING_H
 
-#include "Fsm.h"
-#include "PrecisionTimer.h"
-#include "Switch.h"
+#include "../Fsm.h"
+#include "../PrecisionTimer.h"
+#include "../Switch.h"
 
 /** \brief Programming
  *

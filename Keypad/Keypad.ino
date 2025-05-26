@@ -1,6 +1,6 @@
 #include "io_defs.h"
 #ifndef X86_PLAT
-#include "ArduinoPlat.h"
+#include "../ArduinoPlat.h"
 ArduinoPlat plat;
 #else
 #include "sim/X86Platform.h"
@@ -9,7 +9,7 @@ X86Platform plat;
 
 #include "Init.h"
 #include "ASi.h"
-#include "SimpleQueue.h"
+#include "../SimpleQueue.h"
 #include "io_defs.h"
 
 

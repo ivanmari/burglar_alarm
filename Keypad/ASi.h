@@ -2,7 +2,7 @@
 #define ASI_H
 
 #include "Platform.h"
-#include "SimpleQueue.h"
+#include "../SimpleQueue.h"
 
 const unsigned char RX_BYTE_BUFFER_SZ = 16;
 
