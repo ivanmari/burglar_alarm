@@ -2,8 +2,7 @@
 #define PROGRAMMING_H
 
 #include "../Fsm.h"
-#include "../PrecisionTimer.h"
-#include "../Switch.h"
+#include <BarePoller.h>
 
 /** \brief Programming
  *

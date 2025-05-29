@@ -10,7 +10,7 @@ Eeprom EEPROM;
 #endif
 
 
-Init::Init(Fsm* fsm, ASi* asi, Ipc* ipc):State(fsm), m_asi(asi), m_ipc(ipc), m_armed_sw(ARMED, LOW, asi)
+Init::Init(Fsm* fsm, ASi* asi, Ipc* ipc):State(fsm), m_asi(asi), m_ipc(ipc), m_armed_sw(asi->getPlatform(), ARMED, LOW)
 {}
 
 Init*

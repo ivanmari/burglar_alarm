@@ -3,7 +3,7 @@
 #define ZONE_H
 
 #include "Led.h"
-#include "Switch.h"
+#include <BarePoller.h>
 
 /** \brief Zone
  *
@@ -37,4 +37,4 @@ private:
     int m_zone_id;
 };
 
-#endif //SWITCH_H
+#endif //ZONE_H

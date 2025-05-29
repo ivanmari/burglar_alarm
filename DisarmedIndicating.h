@@ -3,8 +3,6 @@
 
 #include <BarePoller.h>
 #include "Fsm.h"
-#include "PrecisionTimer.h"
-#include "Switch.h"
 #include "Ipc.h"
 
 /** \brief DisarmedIndicating
