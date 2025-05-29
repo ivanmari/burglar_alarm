@@ -1,7 +1,7 @@
 #ifndef DISARMED_INDICATING_H
 #define DISARMED_INDICATING_H
 
-#include "Blinker.h"
+#include <BarePoller.h>
 #include "Fsm.h"
 #include "PrecisionTimer.h"
 #include "Switch.h"
