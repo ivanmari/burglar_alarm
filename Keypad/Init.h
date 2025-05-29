@@ -3,7 +3,6 @@
 
 #include "ASi.h"
 #include "../Fsm.h"
-#include "../PrecisionTimer.h"
 
 /** \brief INIT
  *

@@ -1,10 +1,8 @@
 #ifndef ARMED_INDICATING_H
 #define ARMED_INDICATING_H
 
-#include "Blinker.h"
+#include <BarePoller.h>
 #include "Fsm.h"
-#include "PrecisionTimer.h"
-#include "Switch.h"
 #include "Ipc.h"
 
 /** \brief ArmedIndicating

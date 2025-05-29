@@ -11,7 +11,7 @@ const long int SIREN_ON = 500 * MILLISECONDS;
 Panic::Panic(Fsm* fsm, ASi* asi, Ipc* ipc):State(fsm),
 m_asi(asi), m_ipc(ipc), m_periodTimer(asi->getPlatform(), PANIC_PERIOD),
 m_blinker(asi->getPlatform(), SIREN, SIREN_ON, SIREN_OFF, HIGH),
-m_disarm_sw(ARMED, HIGH, asi)
+m_disarm_sw(asi->getPlatform(), ARMED, HIGH)
 {}
 
 Panic*

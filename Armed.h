@@ -1,8 +1,8 @@
 #ifndef ARMED_H
 #define ARMED_H
 
+#include <BarePoller.h>
 #include "Fsm.h"
-#include "PrecisionTimer.h"
 #include "Zone.h"
 #include "Ipc.h"
 #include "io_defs.h"
